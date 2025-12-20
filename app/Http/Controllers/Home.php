@@ -63,7 +63,7 @@ class Home extends Controller
     {
         $site_config   = DB::table('konfigurasi')->first();
 
-        $data = array(  'title'     => 'Menghubungi '.$site_config->namaweb,
+        $data = array(  'title'     => 'Menghuboungi '.$site_config->namaweb,
                         'deskripsi' => 'Kontak '.$site_config->namaweb,
                         'keywords'  => 'Kontak '.$site_config->namaweb,
                         'site_config'      => $site_config,
