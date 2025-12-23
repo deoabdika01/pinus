@@ -275,3 +275,8 @@ Route::post('admin/project/edit_proses', 'App\Http\Controllers\Admin\Download@ed
 Route::post('admin/project/proses', 'App\Http\Controllers\Admin\Download@proses');
 
 /* END BACK END*/
+
+
+Route::get('myview-home', function () {
+    return view('myview/home');
+});
