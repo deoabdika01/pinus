@@ -186,3 +186,13 @@ Route::post('admin/project/proses', 'App\Http\Controllers\Admin\Download@proses'
 
 /* END BACK END*/
 
+
+Route::get('myview-home', function () {
+    return view('myview/home');
+})->name('beranda');
+Route::get('myview-berita', function () {
+    return view('myview/berita');
+})->name('berita');
+Route::get('myview-event', function () {
+    return view('myview/event');
+})->name('event');
