@@ -27,17 +27,10 @@
     <div class="input-group">
       <span class="input-group-btn" >
         <button class="btn btn-danger btn-sm" type="submit" name="hapus" onClick="check();" >
-          <i class="fa fa-trash"></i>
+          <i class="fa fa-trash"> HAPUS ALL </i>
         </button> 
       </span>
-      <select name="id_kategori_galeri" class="form-control form-control-sm">
-        <?php foreach($kategori_galeri as $kategori_galeri) { ?>
-          <option value="<?php echo $kategori_galeri->id_kategori_galeri ?>"><?php echo $kategori_galeri->nama_kategori_galeri ?></option>
-        <?php } ?>
-      </select>
-      <span class="input-group-btn" >
-        <button type="submit" class="btn btn-info btn-sm btn-flat" name="update">Update</button> 
-      </span>
+      
     </div>
   </div>
 
@@ -62,12 +55,10 @@
                 </button>
             </div>
             </th>
-            <th width="8%">GAMBAR</th>
-            <th width="20%">JUDUL</th>
-            <th width="15%">KATEGORI</th>
-            <th width="10%">JENIS</th>
-            <th width="10%">TAMPILKAN TEKS DI BANNER?</th>
-            <th width="20%">Action</th>
+            <th width="8%" class="text-center">GAMBAR</th>
+            <th width="20%" class="text-center">JUDUL</th>
+            <th width="5%" class="text-center">URUTAN</th>
+            <th width="20%" class="text-center">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -84,11 +75,9 @@
 
               <td><img src="{{ asset('assets/upload/image/thumbs/'.$galeri->gambar) }}" class="img img-thumbnail img-fluid"></td>
               <td><?php echo $galeri->judul_galeri ?></td>
-              <td><a href="{{ asset('admin/galeri/kategori/'.$galeri->id_kategori_galeri) }}"><?php echo $galeri->nama_kategori_galeri ?></a></td>
-              <td><a href="{{ asset('admin/galeri/status_galeri/'.$galeri->jenis_galeri) }}">
-                  <?php echo $galeri->jenis_galeri ?></a></td>
-              <td>{{ $galeri->status_text }}</td>
-              <td>
+              <td><?php echo $galeri->urutan ?></td>
+              
+              <td class="text-center">
                     <div class="btn-group">
 
                         <a href="{{ asset('admin/galeri/edit/'.$galeri->id_galeri) }}" 

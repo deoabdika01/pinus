@@ -18,36 +18,14 @@
 {{ csrf_field() }}
 <input type="hidden" name="id_download" value="{{ $download->id_download }}">
 <div class="row form-group">
-	<label class="col-md-3 text-right">Nama file/project</label>
+	<label class="col-md-3 text-right">Nama file</label>
 	<div class="col-md-9">
 		<input type="text" name="judul_download" class="form-control" placeholder="Judul project" value="<?php echo $download->judul_download ?>">
 	</div>
 </div>
 
-<div class="row form-group">
-	<label class="col-md-3 text-right">Jenis/Posisi Project</label>
-	<div class="col-md-9">
-		<select name="jenis_download" class="form-control">
-			<option value="Download">File Project</option>
-			<option value="Panduan" 
-			<?php if($download->jenis_download=="Panduan") { echo "selected"; } ?>
-			>Panduan Penelitian</option>
-		</select>
-	</div>
-</div>
 
-<div class="row form-group">
-	<label class="col-md-3 text-right">Kategori Project</label>
-	<div class="col-md-9">
-		<select name="id_kategori_download" class="form-control">
-			<?php foreach($kategori_download as $kategori_download) { ?>
-				<option value="<?php echo $kategori_download->id_kategori_download ?>" 
-					<?php if($download->id_kategori_download==$kategori_download->id_kategori_download) { echo "selected"; } ?>
-					><?php echo $kategori_download->nama_kategori_download ?></option>
-				<?php } ?>
-			</select>
-		</div>
-	</div>
+
 
 	<div class="row form-group">
 		<label class="col-md-3 text-right">Upload File</label>
@@ -63,13 +41,7 @@
 		</div>
 	</div>
 
-	<div class="row form-group">
-		<label class="col-md-3 text-right">Link/website terkait Project</label>
-		<div class="col-md-9">
-			<input type="url" name="website" class="form-control" placeholder="http://jemari-edu.web.id" value="<?php echo $download->website ?>">
-		</div>
-	</div>
-
+	
 	<div class="row form-group">
 		<label class="col-md-3 text-right"></label>
 		<div class="col-md-9">

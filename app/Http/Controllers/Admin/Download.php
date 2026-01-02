@@ -16,11 +16,10 @@ class Download extends Controller
     	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
     	$mydownload 			= new Download_model();
 		$download 			= $mydownload->semua();
-		$kategori_download 	= DB::table('kategori_download')->orderBy('urutan','ASC')->get();
-
+	
 		$data = array(  'title'				=> 'Data Project',
 						'download'			=> $download,
-						'kategori_download'	=> $kategori_download,
+						
                         'content'			=> 'admin/project/index'
                     );
         return view('admin/layout/wrapper',$data);
@@ -33,11 +32,11 @@ class Download extends Controller
         $mydownload           = new Download_model();
         $keywords           = $request->keywords;
         $download             = $mydownload->cari($keywords);
-        $kategori_download    = DB::table('kategori_download')->orderBy('urutan','ASC')->get();
+      
 
         $data = array(  'title'             => 'Data Project',
                         'download'            => $download,
-                        'kategori_download'   => $kategori_download,
+                      
                         'content'           => 'admin/project/index'
                     );
         return view('admin/layout/wrapper',$data);
@@ -59,8 +58,8 @@ class Download extends Controller
             $id_downloadnya       = $request->id_download;
             for($i=0; $i < sizeof($id_downloadnya);$i++) {
                 DB::table('download')->where('id_download',$id_downloadnya[$i])->update([
-                        'id_user'               => Session()->get('id_user'),
-                        'id_kategori_download'    => $request->id_kategori_download
+                        'id_user'               => Session()->get('id_user')
+                        
                     ]);
             }
             return redirect('admin/project')->with(['sukses' => 'Data kategori telah diubah']);
@@ -73,40 +72,25 @@ class Download extends Controller
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
         $mydownload           = new Download_model();
         $download             = $mydownload->status_download($status_download);
-        $kategori_download    = DB::table('kategori_download')->orderBy('urutan','ASC')->get();
+       
 
         $data = array(  'title'             => 'Data Project',
                         'download'            => $download,
-                        'kategori_download'   => $kategori_download,
+                        
                         'content'           => 'admin/project/index'
                     );
         return view('admin/layout/wrapper',$data);
     }
 
-    //Kategori
-    public function kategori($id_kategori_download)
-    {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
-        $mydownload           = new Download_model();
-        $download             = $mydownload->all_kategori_download($id_kategori_download);
-        $kategori_download    = DB::table('kategori_download')->orderBy('urutan','ASC')->get();
-
-        $data = array(  'title'             => 'Data Project',
-                        'download'            => $download,
-                        'kategori_download'   => $kategori_download,
-                        'content'           => 'admin/project/index'
-                    );
-        return view('admin/layout/wrapper',$data);
-    }
+   
 
     // Tambah
     public function tambah()
     {
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
-        $kategori_download    = DB::table('kategori_download')->orderBy('urutan','ASC')->get();
-
+    
         $data = array(  'title'             => 'Tambah Project',
-                        'kategori_download'   => $kategori_download,
+                       
                         'content'           => 'admin/project/tambah'
                     );
         return view('admin/layout/wrapper',$data);
@@ -132,11 +116,11 @@ class Download extends Controller
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
         $mydownload           = new Download_model();
         $download             = $mydownload->detail($id_download);
-        $kategori_download    = DB::table('kategori_download')->orderBy('urutan','ASC')->get();
+       
 
         $data = array(  'title'             => 'Edit Project',
                         'download'            => $download,
-                        'kategori_download'   => $kategori_download,
+                       
                         'content'           => 'admin/project/edit'
                     );
         return view('admin/layout/wrapper',$data);
@@ -148,8 +132,10 @@ class Download extends Controller
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
         request()->validate([
                             'judul_download'  => 'required|unique:download',
-                            'gambar'          => 'required|file|mimes:jpeg,png,jpg,pdf,doc,docx,xls,xlsx,ppt,pptx|max:8024',
+                            'gambar'        => 'required|file|mimes:jpeg,png,jpg,pdf,doc,docx,xls,xlsx,ppt,pptx|max:8024',
+                           
                             ]);
+                   
         // UPLOAD START
         $image                  = $request->file('gambar');
         $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
@@ -158,14 +144,15 @@ class Download extends Controller
         $destinationPath = './assets/upload/file';
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
+       
         DB::table('download')->insert([
-            'id_kategori_download'  => $request->id_kategori_download,
+            
             'id_user'               => Session()->get('id_user'),
             'judul_download'        => $request->judul_download,
-            'jenis_download'        => $request->jenis_download,
+            'jenis_download'        =>'Download',
             'isi'                   => $request->isi,
-            'gambar'                => $input['nama_file'],
-            'website'               => $request->website
+            'file'                => $input['nama_file']
+        
         ]);
         return redirect('admin/project')->with(['sukses' => 'Data telah ditambah']);
     }
@@ -176,7 +163,8 @@ class Download extends Controller
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
         request()->validate([
                             'judul_download'    => 'required',
-                            'gambar'            => 'file|mimes:jpeg,png,jpg,pdf,doc,docx,xls,xlsx,ppt,pptx|max:8024',
+                            'gambar'        => 'required|file|mimes:jpeg,png,jpg,pdf,doc,docx,xls,xlsx,ppt,pptx|max:8024',
+                           
                             ]);
         // UPLOAD START
         $image                  = $request->file('gambar');
@@ -188,22 +176,22 @@ class Download extends Controller
             $image->move($destinationPath, $input['nama_file']);
             // END UPLOAD
             DB::table('download')->where('id_download',$request->id_download)->update([
-                'id_kategori_download'  => $request->id_kategori_download,
+              
                 'id_user'               => Session()->get('id_user'),
                 'judul_download'        => $request->judul_download,
-                'jenis_download'        => $request->jenis_download,
+                'jenis_download'        =>'Download',
                 'isi'                   => $request->isi,
-                'gambar'                => $input['nama_file'],
-                'website'               => $request->website
+                'file'                => $input['nama_file']
+                
             ]);
         }else{
             DB::table('download')->where('id_download',$request->id_download)->update([
-                'id_kategori_download'  => $request->id_kategori_download,
+               
                 'id_user'               => Session()->get('id_user'),
                 'judul_download'        => $request->judul_download,
-                'jenis_download'        => $request->jenis_download,
-                'isi'                   => $request->isi,
-                'website'               => $request->website
+                'jenis_download'        =>'Download',
+                'isi'                   => $request->isi
+               
             ]);
         }
         return redirect('admin/project')->with(['sukses' => 'Data telah ditambah']);

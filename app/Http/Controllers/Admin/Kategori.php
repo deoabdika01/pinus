@@ -26,14 +26,13 @@ class Kategori extends Controller
     	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
     	request()->validate([
 					        'nama_kategori' => 'required|unique:kategori',
-					        'urutan' 		=> 'required',
+					       
 					        ]);
     	$slug_kategori = Str::slug($request->nama_kategori, '-');
         DB::table('kategori')->insert([
             'id_user'       => Session()->get('id_user'),
             'nama_kategori' => $request->nama_kategori,
-            'slug_kategori'	=> $slug_kategori,
-            'urutan'   		=> $request->urutan
+            'slug_kategori'	=> $slug_kategori
         ]);
         return redirect('admin/kategori')->with(['sukses' => 'Data telah ditambah']);
     }
@@ -44,14 +43,12 @@ class Kategori extends Controller
     	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
     	request()->validate([
 					        'nama_kategori' => 'required',
-					        'urutan' 		=> 'required',
 					        ]);
     	$slug_kategori = Str::slug($request->nama_kategori, '-');
         DB::table('kategori')->where('id_kategori',$request->id_kategori)->update([
             'id_user'       => Session()->get('id_user'),
             'nama_kategori' => $request->nama_kategori,
-            'slug_kategori'	=> $slug_kategori,
-            'urutan'   		=> $request->urutan
+            'slug_kategori'	=> $slug_kategori
         ]);
         return redirect('admin/kategori')->with(['sukses' => 'Data telah diupdate']);
     }

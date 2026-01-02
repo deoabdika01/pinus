@@ -8,73 +8,52 @@ $nav_profilf  = $myprofil->nav_profil();
 $nav_layananf = $myprofil->nav_layanan();
 ?>
 <!--Footer Start-->
-<footer class="h3footer wf100">
-   <div class="container">
-      <div class="row">
-         <!--Footer Widget Start-->
-         <div class="col-md-4 col-sm-6">
-            <div class="footer-widget">
-               <h3>{{ $site_config->namaweb }}</h3>
-               <p>{{ $site_config->deskripsi }}</p>
-               <hr style="border-top: solid thin #EEE;padding:0; margin: 5px 0;">
-               <p><strong>Our office:</strong>
-                  <?php echo nl2br($site_config->alamat) ?>
-                  <br><strong>Phone:</strong> {{ $site_config->telepon }}
-                  <br><strong>Fax:</strong> {{ $site_config->fax }}
-                  <br><strong>Email:</strong> {{ $site_config->email }}
-                  <br><strong>Website:</strong> {{ $site_config->website }}</p>
+</main>
+
+<footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top">
+        <div class="row gy-4">
+            <div class="col-lg-4 col-md-6 footer-about">
+                <a href="index.html" class="logo d-flex align-items-center">
+                    <span class="sitename">Company</span>
+                </a>
+                <div class="footer-contact pt-3">
+                    <p><?php echo nl2br($site_config->alamat) ?></p>
+                    
+                    <p class="mt-3"><strong>Phone:</strong> <span>{{ $site_config->telepon }}</span></p>
+                    <p><strong>Email:</strong> <span>{{ $site_config->email }}</span></p>
+                </div>
+                <div class="social-links d-flex mt-4">
+                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
             </div>
-         </div>
-         <!--Footer Widget End--> 
-         <!--Footer Widget Start-->
-         <div class="col-md-5 col-sm-6">
-            <div class="footer-widget">
-               <h3>Layanan</h3>
-               <ul class="lastest-products row d-flex flex-row flex-nowrap overflow-auto">
-                  <?php foreach($nav_layananf as $nav_layananf) { ?>
-                  <li class="col-md-4 col-sm-12"><img src="{{ asset('assets/upload/image/thumbs/'.$nav_layananf->gambar) }}" alt="{{ $nav_layananf->judul_berita }}"> <strong><a href="{{ asset('layanan/'.$nav_layananf->slug_berita) }}">{{ $nav_layananf->judul_berita }}</a></strong> <span class="pdate"><i>Updated:</i> <?php echo tanggal('tanggal_id',$nav_layananf->tanggal_publish) ?></span> </li>
-                  <?php } ?>
-               </ul>
-            </div>
-         </div>
-         <!--Footer Widget End--> 
-         <!--Footer Widget Start-->
-         <div class="col-md-3 col-sm-12">
-            <div class="footer-widget">
-               <h3>Tetap Update</h3>
-               <div class="newsletter">
-                  <ul>
-                     <li>
-                        <input type="text" placeholder="Your Name">
-                     </li>
-                     <li>
-                        <input type="text" placeholder="Your Email">
-                     </li>
-                     <li>
-                        <input type="submit" value="Subscribe Now">
-                     </li>
-                  </ul>
-               </div>
-               <div class="footer-social">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a> 
-                  <a href="#"><i class="fab fa-twitter"></i></a> 
-                  <a href="#"><i class="fab fa-linkedin-in"></i></a> 
-                  <a href="#"><i class="fab fa-instagram"></i></a> 
-                  <a href="#"><i class="fab fa-youtube"></i></a> </div>
-            </div>
-         </div>
-         <!--Footer Widget End--> 
-      </div>
-      <div class="row footer-copyr">
-         <div class="col-md-4 col-sm-4"> <img src="{{ asset('assets/upload/image/'.$site_config->logo) }}" alt="" style="max-height: 50px; width: auto;"> </div>
-         <div class="col-md-8 col-sm-8">
-               <p><a target="_blank" href="https://jemari-edu.web.id">{{ $site_config->namaweb }}</a></p>
-            </div>
-      </div>
-   </div>
+
+           
+            
+
+        </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">PINUS</strong> <span>All Rights Reserved</span>
+        </p>
+        
+    </div>
+
 </footer>
-<!--Footer End--> 
-</div>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+
+
 <!--   JS Files Start  --> 
 <script src="{{ asset('assets/aws/js/jquery-3.3.1.min.js') }}"></script> 
 <script src="{{ asset('assets/aws/js/jquery-migrate-1.4.1.min.js') }}"></script> 
@@ -85,5 +64,22 @@ $nav_layananf = $myprofil->nav_layanan();
 <script src="{{ asset('assets/aws/js/isotope.min.js') }}"></script> 
 <script src="{{ asset('assets/aws/js/slick.min.js') }}"></script> 
 <script src="{{ asset('assets/aws/js/custom.js') }}"></script>
+
+
+<!--  ASSET BARU UNTUK LAYOUT BARU --> 
+ <!-- Vendor JS Files -->
+ <script src=" {{ asset('assets_bootstrap/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
+ <script src="{{ asset('assets_bootstrap/assets/vendor/php-email-form/validate.js') }}  "></script>
+ <script src="{{ asset('assets_bootstrap/assets/vendor/aos/aos.js') }} "></script>
+ <script src="{{ asset('assets_bootstrap/assets/vendor/glightbox/js/glightbox.min.js') }} "></script>
+ <script src="{{ asset('assets_bootstrap/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }} "></script>
+ <script src="{{ asset('assets_bootstrap/assets/vendor/isotope-layout/isotope.pkgd.min.js') }} "></script>
+ <script src="{{ asset('assets_bootstrap/assets/vendor/waypoints/noframework.waypoints.js') }} "></script>
+ <script src="{{ asset('assets_bootstrap/assets/vendor/swiper/swiper-bundle.min.js') }} "></script>
+
+ <!-- Main JS File -->
+ <script src="{{ asset('assets_bootstrap/assets/js/main.js') }}  "></script>
+
+
 </body>
 </html>

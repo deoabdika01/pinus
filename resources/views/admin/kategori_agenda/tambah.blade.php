@@ -30,12 +30,6 @@
 	</div>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-3 text-right">Nomor urut</label>
-	<div class="col-md-9">
-<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="" required>
-</div>
-</div>
 
 <div class="form-group row">
 	<label class="col-md-3 text-right"></label>
