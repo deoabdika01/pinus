@@ -8,13 +8,10 @@
       <input type="text" name="keywords" class="form-control" placeholder="Ketik kata kunci..." value="<?php if(isset($_GET['keywords'])) { echo strip_tags($_GET['keywords']); } ?>" required>
       <span class="input-group-btn btn-flat">
         <button type="submit" class="btn btn-info"><i class="fa fa-search"></i> Cari</button>
-        <?php if(Request::segment(3)=="jenis_agenda") { ?>
-          <a href="{{ asset('admin/agenda/tambah?jenis_agenda='.Request::segment(4)) }}" class="btn btn-success">
-          <i class="fa fa-plus"></i> Tambah Baru</a>
-        <?php }else{ ?>
+     
           <a href="{{ asset('admin/agenda/tambah') }}" class="btn btn-success">
           <i class="fa fa-plus"></i> Tambah Baru</a>
-        <?php } ?>
+       
       </span>
     </div>
     </form>
@@ -37,26 +34,21 @@
       <button class="btn btn-default btn-sm" type="submit" name="hapus" onClick="check();" >
           <i class="fa fa-trash"></i>
         </button> 
-      <select name="id_kategori_agenda" class="form-control form-control-sm">
-        <?php 
-        $site           = DB::table('kategori_agenda')->get();
-        foreach($kategori_agenda as $kategori_agenda) { ?>
-          <option value="<?php echo $kategori_agenda->id_kategori_agenda ?>"><?php echo $kategori_agenda->nama_kategori_agenda ?></option>
-        <?php } ?>
+
+        <select name="id_kategori_agenda" class="form-control form-control-sm" 
+              onchange="if(this.value) window.location.href = this.value;">
+          <option value="{{ url('admin/agenda') }}">-- SEMUA --</option>
+          
+          @foreach($kategori_agenda as $item)
+              <option value="{{ url('admin/agenda/kategori/' . $item->id_kategori_agenda) }}"
+                  {{ request()->is('admin/agenda/kategori/' . $item->id_kategori_agenda) ? 'selected' : '' }}>
+                  {{ $item->nama_kategori_agenda }}
+              </option>
+          @endforeach
       </select>
-      <span class="input-group-btn" >
-        <button type="submit" class="btn btn-info btn-sm btn-flat" name="update">Update</button>
-        
-      
 
-        <button class="btn btn-warning btn-sm" type="submit" name="draft" onClick="check();" >
-          <i class="fa fa-times"></i> Draft
-        </button>
-
-        <button class="btn btn-primary btn-sm" type="submit" name="publish" onClick="check();" >
-          <i class="fa fa-check"></i> Publish
-        </button>
-      </span>
+     
+    
     </div>
   </div>
     </div>
@@ -104,13 +96,7 @@
     </a>
       <small>
         <br>Posted: <?php echo date('d M Y H:i: s',strtotime($agenda->tanggal_post)) ?>
-        <br>Published: <?php echo date('d M Y H:i: s',strtotime($agenda->tanggal_publish)) ?>
-        <?php if($agenda->jenis_agenda=="Promo") { ?>
-          <br>Promo: <span class="text-danger"><strong><?php echo date('d M Y',strtotime($agenda->tanggal_mulai)) ?> s/d <?php echo date('d M Y ',strtotime($agenda->tanggal_selesai)) ?></strong></span>
-        <?php } ?>
-        <br>Urutan: <?php echo $agenda->urutan ?>
-        <br>Icon: <i class="<?php echo $agenda->icon ?>"></i> <?php echo $agenda->icon ?>
-        <br>Tgl posting: <?php echo date('d-m-Y',strtotime($agenda->tanggal_publish)) ?>
+    
       </small>
     </td>
     <td>
@@ -122,9 +108,9 @@
       </small>
     </td>
     <td>
-    <a href="{{ asset('admin/agenda/kategori_agenda/'.$agenda->id_kategori_agenda) }}">
-    <?php echo $agenda->nama_kategori_agenda ?><sup><i class="fa fa-link"></i></sup>
-    </a>
+    
+       <?php echo $agenda->nama_kategori_agenda ?>
+    
     <br>
     Jenis: <a href="{{ asset('admin/agenda/jenis_agenda/'.$agenda->jenis_agenda) }}">
     <?php echo $agenda->jenis_agenda ?><sup><i class="fa fa-link"></i></sup>
@@ -139,8 +125,7 @@
     </a></td>
     <td>
       <div class="btn-group">
-        <a href="{{ asset('agenda/read/'.$agenda->slug_agenda) }}" 
-        class="btn btn-success btn-sm" target="_blank"><i class="fa fa-eye"></i></a>
+       
 
         <a href="{{ asset('admin/agenda/edit/'.$agenda->id_agenda) }}" 
         class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>

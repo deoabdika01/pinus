@@ -17,7 +17,9 @@ class Galeri extends Controller
                     ->select('galeri.*', 'kategori_galeri.nama_kategori_galeri')
                     ->orderBy('galeri.id_galeri','DESC')
                     ->paginate(10);
+               
        	$site 	= DB::table('konfigurasi')->first();
+        //dd($site);
 
 		$data = array(  'title'		=> 'Galeri '.$site->namaweb,
 						'deskripsi'	=> 'Galeri '.$site->namaweb,

@@ -22,8 +22,8 @@
             </div>
         </th>
     <th width="25%">JUDUL</th>
-    <th width="30%">PROJECT - POSISI</th>
-    <th width="5%">HITS</th>
+    <th width="30%">DESKRIPSI</th>
+ 
     <th width="20%">ACTION</th>
 </tr>
 </thead>
@@ -34,24 +34,20 @@
 <tr>
     <td class="text-center">
       <div class="icheck-primary">
-        <input type="checkbox" name="id_download" value="{{ $download->id_download }}" id="check<?php echo $i ?>">
+        <input type="checkbox" name="id_download[]" value="{{ $download->id_download }}" id="check<?php echo $i ?>">
         <label for="check<?php echo $i ?>"></label>
       </div>
     </td>
     <td><?php echo $download->judul_download ?>
       
-      <br><small>
-      Link:<br> 
-      <textarea name="aa" class="form-control">{{ asset('download/unduh/'.$download->id_download) }}</textarea>
-      </small>
-
+     
     </td>
-    <td><?php echo $download->nama_kategori_download ?> - <?php echo $download->jenis_download ?>
+    <td>
       <small>
         <br><?php echo $download->isi ?>
       </small>
     </td>
-    <td class="text-center"><?php echo $download->hits ?> Hits</td>
+    
     <td>
       <div class="btn-group">
         {{-- <a href="{{ asset('admin/project/unduh/'.$download->id_download) }}" class="btn btn-success btn-sm" target="_blank"><i class="fa fa-download"></i> Unduh</a> --}}

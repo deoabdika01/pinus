@@ -25,12 +25,7 @@
 	</div>
 </div>
 
-<div class="form-group row">
-	<label class="col-md-3 text-right">Nomor urut</label>
-	<div class="col-md-9">
-<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo $kategori_agenda->urutan ?>" required>
-</div>
-</div>
+
 
 <div class="form-group row">
 	<label class="col-md-3 text-right"></label>

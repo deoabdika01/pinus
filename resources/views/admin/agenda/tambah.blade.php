@@ -81,13 +81,7 @@
   </div>
 </div>
 
-<div class="row form-group">
-  <label class="col-md-3 text-right">Peta Google Map</label>
-  <div class="col-md-9">
-    <textarea name="google_map" class="form-control" placeholder="Peta Google Map"><?php if(isset($_POST['tempat'])) { echo old('google_map'); }else{ echo $site->google_map; } ?></textarea>
-    <small class="text-warning">Berbeda lokasi? Hapus konten di atas dan embed map baru. Baca cara embed Google Map di <a href="https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&hl=en"  target="_blank" class="badge badge-success" title="Cara embed google Map"><i class="fa fa-link"></i> Link Ini</a>.</small>
-  </div>
-</div>
+
 
 <div class="row form-group">
   <label class="col-md-3 text-right">Isi dan Keterangan Lengkap</label> 
@@ -96,12 +90,7 @@
   </div>
 </div>
 
-<div class="row form-group">
-  <label class="col-md-3 text-right">Keywords dan Ringkasan<br>(untuk pencarian Google)</label>
-  <div class="col-md-6">
-    <textarea name="keywords" class="form-control" placeholder="Keywords (untuk pencarian Google)">{{ old('keywords') }}</textarea>
-  </div>
-</div>
+
 
 <div class="row form-group">
   <label class="col-md-3 text-right">Status, Tanggal &amp; Jam Publish</label>
@@ -111,21 +100,10 @@
       <option value="Draft">Simpan sebagai draft</option>}
     </select>
   </div>
-  <div class="col-md-2">
-    <input type="text" name="tanggal_publish" class="form-control tanggal" placeholder="Tanggal publikasi" value="<?php if(isset($_POST['tanggal_publish'])) { echo old('tanggal_publish'); }else{ echo date('d-m-Y'); } ?>" data-date-format="dd-mm-yyyy">
-  </div>
-  <div class="col-md-2">
-    <input type="text" name="jam_publish" class="form-control time-picker" placeholder="Jam publikasi" value="<?php if(isset($_POST['jam_publish'])) { echo old('jam_publish'); }else{ echo date('H:i:s'); } ?>">
-  </div>
+ 
 </div>
 
-<div class="row form-group">
-  <label class="col-md-3 text-right">Icon</label>
-  <div class="col-md-6">
-    <input type="text" name="icon" class="form-control" placeholder="Icon agenda/profil/layanan" value="{{ old('icon') }}">
-    <small class="text-success">Icon menggunakan Fontawesome. Kunjungi <a href="https://fontawesome.com/" target="_blank">https://fontawesome.com/</a></small>
-  </div>
-</div>
+
 
 <div class="row form-group">
   <label class="col-md-3 text-right"></label>

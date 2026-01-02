@@ -32,7 +32,7 @@
       <div class="text-center">
           <hr>
         <h4>{{ website('namaweb') }}</h4>
-          <p>{{ website('tagline') }}</p>
+          
           <hr>
         </div>
       <p class="login-box-msg">Sign in to start your session</p>
@@ -75,7 +75,7 @@
       <hr>
 
       <p class="text-center link-bawah">
-        <a href="{{ asset('/') }}">Back to Homepage</a> | <a href="{{ asset('login/forgot') }}">Forgot password?</a>
+        <a href="{{ asset('/') }}">Back to Homepage</a> 
       </p>
       
     </div>

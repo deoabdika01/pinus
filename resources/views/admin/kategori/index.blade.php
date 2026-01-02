@@ -8,7 +8,7 @@
     <th width="5%">NO</th>
     <th width="25%">NAMA KATEGORI</th>
     <th width="25%">SLUG</th>
-    <th width="10%">NO URUT</th>
+    
     <th></th>
 </tr>
 </thead>
@@ -20,8 +20,8 @@
     <td class="text-center"><?php echo $i ?></td>
     <td><?php echo $kategori->nama_kategori ?></td>
     <td><?php echo $kategori->slug_kategori ?></td>
-    <td><?php echo $kategori->urutan ?></td>
-    <td>
+
+    <td class="text-center">
       <div class="btn-group">
       <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Edit<?php echo $kategori->id_kategori ?>">
     <i class="fa fa-edit"></i> Edit

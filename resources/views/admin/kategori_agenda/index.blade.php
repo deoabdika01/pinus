@@ -9,7 +9,7 @@
     <th width="25%">NAMA KATEGORI</th>
     <th width="25%">KETERANGAN</th>
     <th width="15%">SLUG</th>
-    <th width="10%">NO URUT</th>
+   
     <th></th>
 </tr>
 </thead>
@@ -22,8 +22,8 @@
     <td><?php echo $kategori_agenda->nama_kategori_agenda ?></td>
     <td><?php echo $kategori_agenda->keterangan ?></td>
     <td><?php echo $kategori_agenda->slug_kategori_agenda ?></td>
-    <td><?php echo $kategori_agenda->urutan ?></td>
-    <td>
+ 
+    <td class="text-center">
       <div class="btn-group">
       <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Edit<?php echo $kategori_agenda->id_kategori_agenda ?>">
     <i class="fa fa-edit"></i> Edit

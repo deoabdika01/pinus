@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<div class="col-md-6">
+<div class="col-md-12">
 	<h3>Basic information:</h3><hr>
     <div class="form-group">
     <label>Company name</label>
@@ -125,61 +125,6 @@
     <input type="text" name="nama_instagram" placeholder="Nama akun instagram" value="<?php echo $site->nama_instagram ?>" class="form-control">
     </div>
     
-</div>
-
-<div class="col-md-6">
-    <h3>Cara Pemesanan Produk</h3><hr>
-    <div class="form-group">
-    <label>Pilih Cara Pemesanan Produk</label>
-    <select name="cara_pesan" class="form-control">
-        <option value="Formulir Pemesanan">Formulir Pemesanan</option>
-        <option value="Keranjang Belanja" <?php if($site->cara_pesan=='Keranjang Belanja') { echo 'selected'; } ?>>Keranjang Belanja</option>
-    </select>
-    </div>
-
-    <h3>Text di bawah peta dan link downloadnya</h3><hr>
-    <div class="form-group">
-    <label>Text bawah peta</label>
-    <input type="text" name="text_bawah_peta" placeholder="Text bawah peta" value="<?php echo $site->text_bawah_peta ?>" class="form-control">
-    </div>
-    
-    <div class="form-group">
-    <label>Link text di bawah peta <i class="fa fa-link"></i></label>
-    <input type="text" name="link_bawah_peta" placeholder="Link text di bawah peta" value="<?php echo $site->link_bawah_peta ?>" class="form-control">
-    </div>
-    
-	<h3>Modul SEO (Search Engine Optimization)</h3><hr>
-	<div class="form-group">
-    <label>Keywords (Keyword search for Google, Bing, etc)</label>
-    <textarea name="keywords" rows="3" class="form-control" placeholder="Kata kunci / keywords"><?php echo $site->keywords ?></textarea>
-    </div>
-    
-    <div class="form-group">
-    <label>Metatext</label>
-    <textarea name="metatext" rows="5" class="form-control" placeholder="Kode metatext"><?php echo $site->metatext ?></textarea>
-    </div>
-    
-    <h3>Google Map</h3><hr>
-    <div class="form-group">
-    <label>Google Map</label>
-    <textarea name="google_map" rows="5" class="form-control" placeholder="Kode dari Google Map"><?php echo $site->google_map ?></textarea>
-    </div>
-    
-    <div class="form-group map">
-        <style type="text/css" media="screen">
-            iframe {
-                width: 100%;
-                max-height: 200px;
-            }
-        </style>
-    <?php echo $site->google_map ?>
-
-    <hr>
-    <div class="form-group btn-group">
-        <input type="submit" name="submit" value="Save Configuration" class="btn btn-success ">
-        <input type="reset" name="reset" value="Reset" class="btn btn-primary ">
-    </div>
-    </div>
 </div>
 
 
