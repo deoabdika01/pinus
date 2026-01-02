@@ -16,11 +16,11 @@ class Galeri extends Controller
     	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
     	$mygaleri 			= new Galeri_model();
 		$galeri 			= $mygaleri->semua();
-		$kategori_galeri 	= DB::table('kategori_galeri')->orderBy('urutan','ASC')->get();
+		
 
-		$data = array(  'title'				=> 'Data Galeri',
+		$data = array(  'title'				=> 'Data Galeri Depan',
 						'galeri'			=> $galeri,
-						'kategori_galeri'	=> $kategori_galeri,
+						
                         'content'			=> 'admin/galeri/index'
                     );
         return view('admin/layout/wrapper',$data);
@@ -33,11 +33,11 @@ class Galeri extends Controller
         $mygaleri           = new Galeri_model();
         $keywords           = $request->keywords;
         $galeri             = $mygaleri->cari($keywords);
-        $kategori_galeri    = DB::table('kategori_galeri')->orderBy('urutan','ASC')->get();
+     
 
         $data = array(  'title'             => 'Data Galeri',
                         'galeri'            => $galeri,
-                        'kategori_galeri'   => $kategori_galeri,
+                       
                         'content'           => 'admin/galeri/index'
                     );
         return view('admin/layout/wrapper',$data);
@@ -59,8 +59,8 @@ class Galeri extends Controller
             $id_galerinya       = $request->id_galeri;
             for($i=0; $i < sizeof($id_galerinya);$i++) {
                 DB::table('galeri')->where('id_galeri',$id_galerinya[$i])->update([
-                        'id_user'               => Session()->get('id_user'),
-                        'id_kategori_galeri'    => $request->id_kategori_galeri
+                        'id_user'               => Session()->get('id_user')
+                        
                     ]);
             }
             return redirect('admin/galeri')->with(['sukses' => 'Data kategori telah diubah']);
@@ -73,11 +73,11 @@ class Galeri extends Controller
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
         $mygaleri           = new Galeri_model();
         $galeri             = $mygaleri->status_galeri($status_galeri);
-        $kategori_galeri    = DB::table('kategori_galeri')->orderBy('urutan','ASC')->get();
+    
 
         $data = array(  'title'             => 'Data Galeri',
                         'galeri'            => $galeri,
-                        'kategori_galeri'   => $kategori_galeri,
+                       
                         'content'           => 'admin/galeri/index'
                     );
         return view('admin/layout/wrapper',$data);
@@ -89,11 +89,11 @@ class Galeri extends Controller
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
         $mygaleri           = new Galeri_model();
         $galeri             = $mygaleri->all_kategori_galeri($id_kategori_galeri);
-        $kategori_galeri    = DB::table('kategori_galeri')->orderBy('urutan','ASC')->get();
+      
 
         $data = array(  'title'             => 'Data Galeri',
                         'galeri'            => $galeri,
-                        'kategori_galeri'   => $kategori_galeri,
+                        
                         'content'           => 'admin/galeri/index'
                     );
         return view('admin/layout/wrapper',$data);
@@ -103,10 +103,10 @@ class Galeri extends Controller
     public function tambah()
     {
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
-        $kategori_galeri    = DB::table('kategori_galeri')->orderBy('urutan','ASC')->get();
+       
 
         $data = array(  'title'             => 'Tambah Galeri',
-                        'kategori_galeri'   => $kategori_galeri,
+                      
                         'content'           => 'admin/galeri/tambah'
                     );
         return view('admin/layout/wrapper',$data);
@@ -118,11 +118,11 @@ class Galeri extends Controller
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
         $mygaleri           = new Galeri_model();
         $galeri             = $mygaleri->detail($id_galeri);
-        $kategori_galeri    = DB::table('kategori_galeri')->orderBy('urutan','ASC')->get();
+      
 
         $data = array(  'title'             => 'Edit Galeri',
                         'galeri'            => $galeri,
-                        'kategori_galeri'   => $kategori_galeri,
+                      
                         'content'           => 'admin/galeri/edit'
                     );
         return view('admin/layout/wrapper',$data);
@@ -164,14 +164,13 @@ class Galeri extends Controller
         }
         DB::table('galeri')->insert([
             'id_user'               => Session()->get('id_user'),
-            'id_kategori_galeri'    => $request->id_kategori_galeri,
+            
             'id_user'               => Session()->get('id_user'),
             'judul_galeri'          => $request->judul_galeri,
-            'isi'                   => $request->isi,
-            'jenis_galeri'          => $request->jenis_galeri,
+          
+            'jenis_galeri'          => 'Homepage',
             'gambar'                => $input['nama_file'],
-            'website'               => $request->website,
-            'status_text'           => $request->status_text,
+           
             'urutan'                => $request->urutan
         ]);
         return redirect('admin/galeri')->with(['sukses' => 'Data telah ditambah']);
@@ -214,14 +213,13 @@ class Galeri extends Controller
             }
             DB::table('galeri')->where('id_galeri',$request->id_galeri)->update([
                 'id_user'               => Session()->get('id_user'),
-                'id_kategori_galeri'    => $request->id_kategori_galeri,
+               
                 'id_user'               => Session()->get('id_user'),
                 'judul_galeri'          => $request->judul_galeri,
-                'isi'                   => $request->isi,
-                'jenis_galeri'          => $request->jenis_galeri,
+              
+                'jenis_galeri'          => 'Homepage',
                 'gambar'                => $input['nama_file'],
-                'website'               => $request->website,
-                'status_text'           => $request->status_text,
+               
                 'urutan'                => $request->urutan
             ]);
         }else{
@@ -238,13 +236,12 @@ class Galeri extends Controller
             }
             DB::table('galeri')->where('id_galeri',$request->id_galeri)->update([
                 'id_user'               => Session()->get('id_user'),
-                'id_kategori_galeri'    => $request->id_kategori_galeri,
+                
                 'id_user'               => Session()->get('id_user'),
                 'judul_galeri'          => $request->judul_galeri,
-                'isi'                   => $request->isi,
-                'jenis_galeri'          => $request->jenis_galeri,
-                'website'               => $request->website,
-                'status_text'           => $request->status_text,
+                
+                'jenis_galeri'          => 'Homepage',
+               
                 'urutan'                => $request->urutan
             ]);
         }

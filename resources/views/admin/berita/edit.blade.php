@@ -49,17 +49,10 @@
 <input type="file" name="gambar" class="form-control" placeholder="Upload gambar">
 </div>
 
-<div class="col-md-3">
-<input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo $berita->urutan ?>">
-</div>
+
 </div>
 
-<div class="row form-group">
-  <label class="col-md-3 text-right">Keywords dan Ringkasan (untuk pencarian Google)</label>
-  <div class="col-md-9">
-<textarea name="keywords" class="form-control" placeholder="Keywords (untuk pencarian Google)"><?php echo $berita->keywords ?></textarea>
-</div>
-</div>
+
 
 <div class="row form-group">
   <label class="col-md-3 text-right">Isi berita</label> 
@@ -73,25 +66,14 @@
   <label class="col-md-3 text-right">Status &amp; Tanggal Publish</label>
 
   <div class="col-md-2">
-<select name="status_berita" class="form-control select2">
-  <option value="Publish">Publikasikan</option>
-  <option value="Draft" <?php if($berita->status_berita=="Draft") { echo "selected"; } ?>>Simpan sebagai draft</option>
-</select>
-</div>
-<div class="col-md-2">
-    <input type="text" name="tanggal_publish" class="form-control tanggal" placeholder="Tanggal publikasi" value="<?php if(isset($_POST['tanggal_publish'])) { echo old('tanggal_publish'); }else{ echo date('Y-m-d',strtotime($berita->tanggal_publish)); } ?>" data-date-format="dd-mm-yyyy">
-  </div>
-  <div class="col-md-2">
-  <input type="text" name="jam_publish" class="form-control time-picker" placeholder="Jam publikasi" value="<?php if(isset($_POST['jam_publish'])) { echo old('jam_publish'); }else{ echo date('H:i:s',strtotime($berita->tanggal_publish)); } ?>">
+    <select name="status_berita" class="form-control select2">
+      <option value="Publish">Publikasikan</option>
+      <option value="Draft" <?php if($berita->status_berita=="Draft") { echo "selected"; } ?>>Simpan sebagai draft</option>
+    </select>
   </div>
 </div>
 
-<div class="row form-group">
-  <label class="col-md-3 text-right">Icon berita/profil/layanan</label>
-  <div class="col-md-6">
-    <input type="text" name="icon" class="form-control" placeholder="Icon berita/profil/layanan" value="<?php echo $berita->icon ?>">
-  </div>
-</div>
+
 
 <div class="row form-group">
   <label class="col-md-3 text-right"></label>

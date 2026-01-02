@@ -229,15 +229,15 @@ class Agenda extends Controller
                 'isi'               => $request->isi,
                 'jenis_agenda'      => $request->jenis_agenda,
                 'status_agenda'     => $request->status_agenda,
-                'icon'              => $request->icon,
+                
                 'tanggal_mulai'     => tanggal('tanggal_input',$request->tanggal_mulai),
                 'tanggal_selesai'   => tanggal('tanggal_input',$request->tanggal_selesai),
                 'jam_mulai'         => $request->jam_mulai,
                 'jam_selesai'       => $request->jam_selesai,
-                'keywords'          => $request->keywords,
+               
                 'tempat'            => $request->tempat,
-                'google_map'        => $request->google_map,
-                'tanggal_publish'   => date('Y-m-d',strtotime($request->tanggal_publish)).' '.$request->jam_publish,
+               
+            
                 'tanggal_post'      => date('Y-m-d H:i:s')
             ]);
         }else{
@@ -250,15 +250,11 @@ class Agenda extends Controller
                 'isi'               => $request->isi,
                 'jenis_agenda'      => $request->jenis_agenda,
                 'status_agenda'     => $request->status_agenda,
-                'icon'              => $request->icon,
                 'tanggal_mulai'     => tanggal('tanggal_input',$request->tanggal_mulai),
                 'tanggal_selesai'   => tanggal('tanggal_input',$request->tanggal_selesai),
                 'jam_mulai'         => $request->jam_mulai,
                 'jam_selesai'       => $request->jam_selesai,
-                'keywords'          => $request->keywords,
                 'tempat'            => $request->tempat,
-                'google_map'        => $request->google_map,
-                'tanggal_publish'   => date('Y-m-d',strtotime($request->tanggal_publish)).' '.$request->jam_publish,
                 'tanggal_post'      => date('Y-m-d H:i:s')
             ]);
         }
@@ -299,15 +295,12 @@ class Agenda extends Controller
                 'isi'               => $request->isi,
                 'jenis_agenda'      => $request->jenis_agenda,
                 'status_agenda'     => $request->status_agenda,
-                'icon'              => $request->icon,
                 'tanggal_mulai'     => tanggal('tanggal_input',$request->tanggal_mulai),
                 'tanggal_selesai'   => tanggal('tanggal_input',$request->tanggal_selesai),
                 'jam_mulai'         => $request->jam_mulai,
                 'jam_selesai'       => $request->jam_selesai,
-                'keywords'          => $request->keywords,
-                'tempat'            => $request->tempat,
-                'google_map'        => $request->google_map,
-                'tanggal_publish'   => date('Y-m-d',strtotime($request->tanggal_publish)).' '.$request->jam_publish
+                'tempat'            => $request->tempat
+                
             ]);
         }else{
             $slug_agenda = Str::slug($request->judul_agenda, '-');
@@ -319,16 +312,13 @@ class Agenda extends Controller
                 'isi'               => $request->isi,
                 'jenis_agenda'      => $request->jenis_agenda,
                 'status_agenda'     => $request->status_agenda,
-                'icon'              => $request->icon,
                 'tanggal_mulai'     => tanggal('tanggal_input',$request->tanggal_mulai),
                 'tanggal_selesai'   => tanggal('tanggal_input',$request->tanggal_selesai),
                 'jam_mulai'         => $request->jam_mulai,
                 'jam_selesai'       => $request->jam_selesai,
-                'keywords'          => $request->keywords,
-                'tempat'            => $request->tempat,
-                'google_map'        => $request->google_map,
-                'tanggal_publish'   => date('Y-m-d',strtotime($request->tanggal_publish)).' '.$request->jam_publish
-                ]);
+                'tempat'            => $request->tempat
+            ]);
+                
         }
         return redirect('admin/agenda')->with(['sukses' => 'Data telah ditambah']);
     }

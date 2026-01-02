@@ -26,8 +26,8 @@
 		  </div>
       <div class="text-center">
           <hr>
-        <h4>SISTEM INFORMASI PEGAWAI RSUI</h4>
-          <p>SISTEM INFORMASI PETA KOMPETENSI (SIMRSUI)</p>
+          <h4>{{ website('namaweb') }}</h4>
+          
           <hr>
         </div>
       <p class="login-box-msg">Lupa password? Masukkan alamat email Anda.<br>Atau hubungi Administrator website kami.</p>

@@ -20,7 +20,7 @@ class Berita extends Controller
 		$berita 	= $myberita->berita_update();
 		$kategori 	= DB::table('kategori')->orderBy('urutan','ASC')->get();
 
-		$data = array(  'title'       => 'Data Berita',
+		$data = array(  'title'       => 'Data Berita / Artikel',
 						'berita'      => $berita,
                         'beritas'      => $berita,
 						'kategori'    => $kategori,
@@ -228,13 +228,9 @@ class Berita extends Controller
                 'slug_berita'       => $slug_berita,
                 'judul_berita'      => $request->judul_berita,
                 'isi'               => $request->isi,
-                'jenis_berita'      => $request->jenis_berita,
+                'jenis_berita'      => 'Berita',
                 'status_berita'     => $request->status_berita,
                 'gambar'            => $input['nama_file'],
-                'icon'              => $request->icon,
-                'keywords'          => $request->keywords,
-                'tanggal_publish'   => date('Y-m-d',strtotime($request->tanggal_publish)).' '.$request->jam_publish,
-                'urutan'            => $request->urutan,
                 'tanggal_post'      => date('Y-m-d H:i:s')
             ]);
         }else{
@@ -245,20 +241,14 @@ class Berita extends Controller
                 'slug_berita'       => $slug_berita,
                 'judul_berita'      => $request->judul_berita,
                 'isi'               => $request->isi,
-                'jenis_berita'      => $request->jenis_berita,
+                'jenis_berita'      => 'Berita',
                 'status_berita'     => $request->status_berita,
-                'icon'              => $request->icon,
-                'keywords'          => $request->keywords,
-                'tanggal_publish'   => date('Y-m-d',strtotime($request->tanggal_publish)).' '.$request->jam_publish,
-                'urutan'            => $request->urutan,
                 'tanggal_post'      => date('Y-m-d H:i:s')
             ]);
         }
-        if($request->jenis_berita=="Berita") {
-            return redirect('admin/berita')->with(['sukses' => 'Data telah ditambah']);
-        }else{
-            return redirect('admin/berita/jenis_berita/'.$request->jenis_berita)->with(['sukses' => 'Data telah ditambah']);
-        }
+        
+         return redirect('admin/berita')->with(['sukses' => 'Data telah ditambah']);
+        
     }
 
     // edit
@@ -293,13 +283,9 @@ class Berita extends Controller
                 'slug_berita'       => $slug_berita,
                 'judul_berita'      => $request->judul_berita,
                 'isi'               => $request->isi,
-                'jenis_berita'      => $request->jenis_berita,
+                'jenis_berita'      => 'Berita',
                 'status_berita'     => $request->status_berita,
-                'gambar'            => $input['nama_file'],
-                'icon'              => $request->icon,
-                'keywords'          => $request->keywords,
-                'tanggal_publish'   => date('Y-m-d',strtotime($request->tanggal_publish)).' '.$request->jam_publish,
-                'urutan'            => $request->urutan
+                'gambar'            => $input['nama_file']
             ]);
         }else{
             $slug_berita = Str::slug($request->judul_berita, '-');
@@ -309,19 +295,13 @@ class Berita extends Controller
                 'slug_berita'       => $slug_berita,
                 'judul_berita'      => $request->judul_berita,
                 'isi'               => $request->isi,
-                'jenis_berita'      => $request->jenis_berita,
-                'status_berita'     => $request->status_berita,
-                'icon'              => $request->icon,
-                'keywords'          => $request->keywords,
-                'tanggal_publish'   => date('Y-m-d',strtotime($request->tanggal_publish)).' '.$request->jam_publish,
-                'urutan'            => $request->urutan
+                'jenis_berita'      => 'Berita',
+                'status_berita'     => $request->status_berita
             ]);
         }
-        if($request->jenis_berita=="Berita") {
+      
             return redirect('admin/berita')->with(['sukses' => 'Data telah ditambah']);
-        }else{
-            return redirect('admin/berita/jenis_berita/'.$request->jenis_berita)->with(['sukses' => 'Data telah ditambah']);
-        }
+       
     }
 
     // Delete
@@ -329,6 +309,8 @@ class Berita extends Controller
     {
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
         DB::table('berita')->where('id_berita',$id_berita)->delete();
-        return redirect('admin/berita/jenis_berita/'.$jenis_berita)->with(['sukses' => 'Data telah dihapus']);
+        return redirect('admin/berita')->with(['sukses' => 'Data telah dihapus']);
+
+        
     }
 }

@@ -26,14 +26,14 @@ class Kategori_agenda extends Controller
     	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
     	request()->validate([
 					        'nama_kategori_agenda' => 'required|unique:kategori_agenda',
-					        'urutan' 		       => 'required',
+					       
 					        ]);
     	$slug_kategori_agenda = Str::slug($request->nama_kategori_agenda, '-');
         DB::table('kategori_agenda')->insert([
             'nama_kategori_agenda'   => $request->nama_kategori_agenda,
             'slug_kategori_agenda'	=> $slug_kategori_agenda,
-            'keterangan'            => $request->keterangan,
-            'urutan'   		        => $request->urutan
+            'keterangan'            => $request->keterangan
+      
         ]);
         return redirect('admin/kategori_agenda')->with(['sukses' => 'Data telah ditambah']);
     }
@@ -44,14 +44,14 @@ class Kategori_agenda extends Controller
     	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
     	request()->validate([
 					        'nama_kategori_agenda' => 'required',
-					        'urutan'               => 'required',
+					        
 					        ]);
     	$slug_kategori_agenda = Str::slug($request->nama_kategori_agenda, '-');
         DB::table('kategori_agenda')->where('id_kategori_agenda',$request->id_kategori_agenda)->update([
             'nama_kategori_agenda'   => $request->nama_kategori_agenda,
             'slug_kategori_agenda'	=> $slug_kategori_agenda,
-            'keterangan'            => $request->keterangan,
-            'urutan'                => $request->urutan
+            'keterangan'            => $request->keterangan
+            
         ]);
         return redirect('admin/kategori_agenda')->with(['sukses' => 'Data telah diupdate']);
     }

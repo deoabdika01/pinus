@@ -8,13 +8,10 @@
       <input type="text" name="keywords" class="form-control" placeholder="Ketik kata kunci..." value="<?php if(isset($_GET['keywords'])) { echo strip_tags($_GET['keywords']); } ?>" required>
       <span class="input-group-btn btn-flat">
         <button type="submit" class="btn btn-info"><i class="fa fa-search"></i> Cari</button>
-        <?php if(Request::segment(3)=="jenis_berita") { ?>
-          <a href="{{ asset('admin/berita/tambah?jenis_berita='.Request::segment(4)) }}" class="btn btn-success">
-          <i class="fa fa-plus"></i> Tambah Baru</a>
-        <?php }else{ ?>
+        
           <a href="{{ asset('admin/berita/tambah') }}" class="btn btn-success">
           <i class="fa fa-plus"></i> Tambah Baru</a>
-        <?php } ?>
+       
       </span>
     </div>
     </form>
@@ -37,26 +34,20 @@
       <button class="btn btn-default btn-sm" type="submit" name="hapus" onClick="check();" >
           <i class="fa fa-trash"></i>
         </button> 
-      <select name="id_kategori" class="form-control form-control-sm">
-        <?php 
-        $site           = DB::table('kategori')->get();
-        foreach($kategori as $kategori) { ?>
-          <option value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori ?></option>
-        <?php } ?>
+        <select name="id_kategori" class="form-control form-control-sm" 
+              onchange="if(this.value) window.location.href = this.value;">
+          <option value="{{ url('admin/berita') }}">-- SEMUA --</option>
+          
+          @foreach($kategori as $item)
+              <option value="{{ url('admin/berita/kategori/' . $item->id_kategori) }}"
+                  {{ request()->is('admin/berita/kategori/' . $item->id_kategori) ? 'selected' : '' }}>
+                  {{ $item->nama_kategori }}
+              </option>
+          @endforeach
       </select>
-      <span class="input-group-btn" >
-        <button type="submit" class="btn btn-info btn-sm btn-flat" name="update">Update</button>
-        
+
       
-
-        <button class="btn btn-warning btn-sm" type="submit" name="draft" onClick="check();" >
-          <i class="fa fa-times"></i> Draft
-        </button>
-
-        <button class="btn btn-primary btn-sm" type="submit" name="publish" onClick="check();" >
-          <i class="fa fa-check"></i> Publish
-        </button>
-      </span>
+      
     </div>
   </div>
     </div>
@@ -73,10 +64,7 @@
       </th>
       <th width="5%">GAMBAR</th>
       <th width="50%">JUDUL</th>
-      <?php if(Request::segment(3)=="jenis_berita") { ?>
-      <?php }else{ ?>
-        <th width="15%">KATEGORI</th>
-      <?php } ?>
+      <th width="15%">KATEGORI</th>
       <th width="10%">STATUS</th>
       <th width="10%">AUTHOR</th>
       <th width="15%">ACTION</th>
@@ -107,40 +95,34 @@
     </a>
       <small>
         <br>Posted: <?php echo date('d M Y H:i: s',strtotime($berita->tanggal_post)) ?>
-        <br>Published: <?php echo date('d M Y H:i: s',strtotime($berita->tanggal_publish)) ?>
-        <?php if($berita->jenis_berita=="Promo") { ?>
-          <br>Promo: <span class="text-danger"><strong><?php echo date('d M Y',strtotime($berita->tanggal_mulai)) ?> s/d <?php echo date('d M Y ',strtotime($berita->tanggal_selesai)) ?></strong></span>
-        <?php } ?>
-        <br>Urutan: <?php echo $berita->urutan ?>
-        <br>Icon: <i class="<?php echo $berita->icon ?>"></i> <?php echo $berita->icon ?>
-        <br>Tgl posting: <?php echo date('d-m-Y',strtotime($berita->tanggal_publish)) ?>
-        <br>Jenis: <a href="{{ asset('admin/berita/jenis_berita/'.$berita->jenis_berita) }}">
-    <?php echo $berita->jenis_berita ?><sup><i class="fa fa-link"></i></sup>
+        
+    
     </a>
       </small>
     </td>
     
-  <?php if(Request::segment(3)=="jenis_berita") {}else{ ?>
+ 
     <td>
-    <a href="{{ asset('admin/berita/kategori/'.$berita->id_kategori) }}">
-    <?php echo $berita->nama_kategori ?><sup><i class="fa fa-link"></i></sup>
-    </a>
+   
+    <?php echo $berita->nama_kategori ?>
+    
     </td>
-  <?php } ?>
+
     <td><a href="{{ asset('admin/berita/status_berita/'.$berita->status_berita) }}">
       <small class="badge <?php if($berita->status_berita=="Publish") { echo 'badge-success'; }else{ echo 'badge-warning'; } ?> btn-block">
         <i class="fa <?php if($berita->status_berita=="Publish") { echo 'fa-check-circle'; }else{ echo 'fa-times'; } ?>"></i> <?php echo $berita->status_berita ?></small>
     </a></td>
-    <td><?php if(Request::segment(3)=="jenis_berita") {echo $berita->nama; }else{ ?>
-    <a href="{{ asset('admin/berita/author/'.$berita->id_user) }}">
-    <?php echo $berita->nama ?><sup><i class="fa fa-link"></i></sup>
-    </a>
-  <?php } ?>
+    <td>
+    
+   
+      <a href="{{ asset('admin/berita/author/'.$berita->id_user) }}">
+      <?php echo $berita->nama ?><sup><i class="fa fa-link"></i></sup>
+      </a>
+ 
     </td>
     <td>
       <div class="btn-group">
-        <a href="{{ asset('berita/read/'.$berita->slug_berita) }}" 
-        class="btn btn-success btn-sm" target="_blank"><i class="fa fa-eye"></i></a>
+       
 
         <a href="{{ asset('admin/berita/edit/'.$berita->id_berita) }}" 
         class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>

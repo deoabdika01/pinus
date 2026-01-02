@@ -9,6 +9,9 @@
     font-size: 11px;
   }
 </style>
+
+
+
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -36,41 +39,25 @@
             </a>
           </li>
           
-          <!-- Website Content -->
-          <li class="batas"><hr> <span class="infoku"><i class="fa fa-certificate"></i> Berita &amp; Updates</span></li>
+          <!-- LAYANAN -->
+          <li class="batas"><hr> <span class="infoku"><i class="fa fa-certificate"></i> Layanan </span></li>          
           <li class="batas"><hr></li>
+
+
+         
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
-              <p>Berita &amp; Update<i class="fas fa-angle-left right"></i></p>
+              <p>Berita / Artikel<i class="fas fa-angle-left right"></i></p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item"><a href="{{ asset('admin/berita') }}" class="nav-link"><i class="fas fa-newspaper nav-icon"></i><p>Data Berita &amp; Update</p></a>
-              </li>
-              <li class="nav-item"><a href="{{ asset('admin/berita/tambah') }}" class="nav-link"><i class="fa fa-plus nav-icon"></i><p>Tambah Berita/Update</p></a>
               </li>
               <li class="nav-item"><a href="{{ asset('admin/kategori') }}" class="nav-link"><i class="fa fa-tags nav-icon"></i><p>Kategori berita</p></a>
               </li>
             </ul>
           </li>
-
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-image"></i>
-              <p>Galeri &amp; Banner<i class="fas fa-angle-left right"></i></p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="{{ asset('admin/galeri') }}" class="nav-link"><i class="fas fa-newspaper nav-icon"></i><p>Data Galeri</p></a>
-              </li>
-              <li class="nav-item"><a href="{{ asset('admin/galeri/tambah') }}" class="nav-link"><i class="fa fa-plus nav-icon"></i><p>Tambah Galeri</p></a>
-              </li>
-              <li class="nav-item"><a href="{{ asset('admin/kategori_galeri') }}" class="nav-link"><i class="fa fa-tags nav-icon"></i><p>Kategori Galeri</p></a>
-              </li>
-            </ul>
-          </li>
-
           
-
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
@@ -79,8 +66,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item"><a href="{{ asset('admin/agenda') }}" class="nav-link"><i class="fas fa-newspaper nav-icon"></i><p>Data Event &amp; Agenda</p></a>
               </li>
-              <li class="nav-item"><a href="{{ asset('admin/agenda/tambah') }}" class="nav-link"><i class="fa fa-plus nav-icon"></i><p>Tambah Event &amp; Agenda</p></a>
-              </li>
+             
               <li class="nav-item"><a href="{{ asset('admin/kategori_agenda') }}" class="nav-link"><i class="fa fa-tags nav-icon"></i><p>Kategori Event &amp; Agenda</p></a>
               </li>
             </ul>
@@ -90,25 +76,31 @@
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-download"></i>
-              <p>Project &amp; File<i class="fas fa-angle-left right"></i></p>
+              <p>File<i class="fas fa-angle-left right"></i></p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item"><a href="{{ asset('admin/project') }}" class="nav-link"><i class="fas fa-newspaper nav-icon"></i><p>Data File</p></a>
               </li>
-              <li class="nav-item"><a href="{{ asset('admin/project/tambah') }}" class="nav-link"><i class="fa fa-plus nav-icon"></i><p>Tambah File</p></a>
-              </li>
-              <li class="nav-item"><a href="{{ asset('admin/kategori_project') }}" class="nav-link"><i class="fa fa-tags nav-icon"></i><p>Tambah Project</p></a>
-              </li>
+             
+              
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="{{ asset('admin/video') }}" class="nav-link">
-              <i class="nav-icon fas fa-film"></i>
-              <p>Video Webinar</p>
+          
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fa fa-tags nav-icon"></i>
+              <p>Mitra<i class="fas fa-angle-left right"></i></p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item"><a href="{{ asset('admin/mitra') }}" class="nav-link"><i class="fas fa-newspaper nav-icon"></i><p>Data Mitra</p></a>
+              </li>
+            
+           
+            </ul>
           </li>
 
+        
           <!-- Website Content -->
           <li class="batas"><hr> <span class="infoku"><i class="fa fa-certificate"></i> Profil &amp; Layanan</span></li>
           <li class="batas"><hr></li>
@@ -120,27 +112,20 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="{{ asset('admin/berita/jenis_berita/Layanan') }}" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>Layanan</p>
-            </a>
-          </li>
-
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>Board &amp; Team<i class="fas fa-angle-left right"></i></p>
+              <i class="nav-icon fas fa-image"></i>
+              <p>Galeri Depan<i class="fas fa-angle-left right"></i></p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item"><a href="{{ asset('admin/staff') }}" class="nav-link"><i class="fas fa-newspaper nav-icon"></i><p>Data Board &amp; Team</p></a>
+              <li class="nav-item"><a href="{{ asset('admin/galeri') }}" class="nav-link"><i class="fas fa-newspaper nav-icon"></i><p>Data Galeri</p></a>
               </li>
-              <li class="nav-item"><a href="{{ asset('admin/staff/tambah') }}" class="nav-link"><i class="fa fa-plus nav-icon"></i><p>Tambah Board &amp; Team</p></a>
-              </li>
-              <li class="nav-item"><a href="{{ asset('admin/kategori_staff') }}" class="nav-link"><i class="fa fa-tags nav-icon"></i><p>Kategori Board &amp; Team</p></a>
-              </li>
+            
+           
             </ul>
           </li>
+
+         
 
           <!-- Website Content -->
           <li class="batas"><hr> <span class="infoku"><i class="fa fa-certificate"></i> Website Setting</span></li>
@@ -152,12 +137,7 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="{{ asset('admin/heading') }}" class="nav-link">
-              <i class="nav-icon fas fa-image"></i>
-              <p>Header Gambar</p>
-            </a>
-          </li>
+        
           
           <!-- MENU -->
           <li class="nav-item has-treeview">
@@ -177,10 +157,8 @@
               </li>
               <li class="nav-item"><a href="{{ asset('admin/konfigurasi/icon') }}" class="nav-link"><i class="fa fa-upload nav-icon"></i><p>Ganti Icon</p></a>
               </li>
-              <li class="nav-item"><a href="{{ asset('admin/konfigurasi/email') }}" class="nav-link"><i class="fa fa-envelope nav-icon"></i><p>Email Setting</p></a>
-              </li>
-              <li class="nav-item"><a href="{{ asset('admin/rekening') }}" class="nav-link"><i class="fas fa-book nav-icon"></i><p>Rekening</p></a>
-              </li>
+              
+              
             </ul>
           </li>
 
